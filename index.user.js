@@ -4,7 +4,7 @@
 // @description  Includes auto horn
 // @description  Includes auto page refresh
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @author       You
 // @match        https://www.mousehuntgame.com/*
 // @grant        none
@@ -16,6 +16,9 @@
     const hookAjax = window.hookAjax
     const getSecondsRemainingFn = window.HuntersHorn.getSecondsRemaining
     const $ = window.jQuery
+    
+    // Get current hunting location
+    const huntingLocation = $('.mousehuntHud-environmentName').text().toLowerCase()
 
 
     // HELPERS
@@ -66,10 +69,6 @@
     
     
     
-    
-    // Get current hunting location
-    const huntingLocation = $('.mousehuntHud-environmentName').text().toLowerCase()
-
     // Claim boulder reward if available on init
     claimBoulderRewardFn(parseInt($('.mountainHUD-boulder-health-percent span').text()), 10)
 

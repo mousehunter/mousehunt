@@ -2,7 +2,7 @@
 // @name         Search Mouse
 // @description  Find best location and cheese to catch a mouse
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @author       You
 // @match        https://www.mousehuntgame.com/*
 // @grant        none
@@ -30,6 +30,7 @@
           $('#search-result').html(`${searchResult.map(r =>
             `<div>
                <span style="margin-right: 2em;">Location: ${r.Location}</span>
+               <span style="margin-right: 2em;">Phase: ${r.Phase}</span>
                <span style="margin-right: 2em;">Cheese: ${r.Cheese}</span>
                <span style="margin-right: 2em;">Charm ${r.Charm}</span>
             </div>`
@@ -42,7 +43,7 @@
   $(elementContainer).prepend(searchContainer)
 
 
-  // Process data to return top 3 highest attraction rate
+  // Process data to return top highest attraction rate
   const findMouse = function (nameOfMouse) {
       return mouseDataSrc
           .filter(data => data.Mouse.toLowerCase() === nameOfMouse.toLowerCase())

@@ -32,7 +32,9 @@
                <span style="margin-right: 2em;">Location: ${r.Location}</span>
                <span style="margin-right: 2em;">Phase: ${r.Phase}</span>
                <span style="margin-right: 2em;">Cheese: ${r.Cheese}</span>
-               <span style="margin-right: 2em;">Charm ${r.Charm}</span>
+               <span style="margin-right: 2em;">Charm: ${r.Charm}</span>
+               <span style="margin-right: 2em;">AR: ${r['Attraction Rate']}</span>
+
             </div>`
           )}`)
 

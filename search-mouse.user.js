@@ -2,7 +2,7 @@
 // @name         Search Mouse
 // @description  Find best location and cheese to catch a mouse
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @author       You
 // @match        https://www.mousehuntgame.com/*
 // @grant        none

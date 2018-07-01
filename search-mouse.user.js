@@ -2,7 +2,7 @@
 // @name         Search Mouse
 // @description  Find best location and cheese to catch a mouse
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @author       You
 // @match        https://www.mousehuntgame.com/*
 // @grant        none
@@ -46,13 +46,14 @@
 
 
   // Process data to return top highest attraction rate
-  const findMouse = function (nameOfMouse) {
+  const findMouse = function (input) {
+      const [nameOfMouse, rank = 0] = input.split(',')
       return mouseDataSrc
           .filter(data => data.Mouse.toLowerCase() === nameOfMouse.toLowerCase())
           .sort((a, b) => {
               const key = 'Attraction Rate'
               return parseFloat(a[key], 10) > parseFloat(b[key], 10) ? -1 : 1
           })
-          .slice(0, 1)
+          .slice(parseInt(rank))
   }
 })()

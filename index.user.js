@@ -4,7 +4,7 @@
 // @description  Includes auto horn
 // @description  Includes auto page refresh
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @author       You
 // @match        https://www.mousehuntgame.com/*
 // @grant        none
@@ -79,8 +79,12 @@
   hookAjax({
     onreadystatechange : function (xhr) {
       if (xhr.readyState === 4 && xhr.responseURL === 'https://www.mousehuntgame.com/managers/ajax/turns/activeturn.php') {
-        const { user: { quests: { QuestMountain: { boulder_hp: boulderHp } } } } = JSON.parse(xhr.response)
-        if ($('.mousehuntHud-environmentName').text().toLowerCase() === 'mountain') claimBoulderRewardFn(boulderHp)
+        
+        if ($('.mousehuntHud-environmentName').text().toLowerCase() === 'mountain') {
+          const { user: { quests: { QuestMountain: { boulder_hp: boulderHp } } } } = JSON.parse(xhr.response)
+          claimBoulderRewardFn(boulderHp)
+        }
+        
         setTimeout(() => claimHalloweenRewardFn(), 2000)
       }
     }
